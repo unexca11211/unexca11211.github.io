@@ -1,10 +1,15 @@
-# Getting Started with Create React App
+# Blog project React
 
+This is a repo of blog to react only version
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+First install all dependencies to run the project without problems
 
 ### `npm start`
 
