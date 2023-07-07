@@ -1,0 +1,146 @@
+button {
+  border: none;
+}
+
+.slider-container {
+  position: relative;
+  height: 90vh;
+  width: 100vw;
+}
+
+button.right-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 32px;
+  font-size: 45px;
+  color: white;
+  z-index: 1;
+  cursor: pointer;
+  height: 100%;
+  background-color: transparent;
+}
+
+button.left-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 32px;
+  font-size: 45px;
+  color: white;
+  z-index: 1;
+  cursor: pointer;
+  height: 100%;
+  background-color: transparent;
+}
+
+.slides {
+  height: 100%;
+  text-align: center;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+}
+
+.post-description-slide {
+  position: absolute;
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  background: rgba(230, 230, 230, 0.2);
+  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+  backdrop-filter: blur(21px);
+  -webkit-backdrop-filter: blur(1px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+
+.post-description-slide h1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.dot-container {
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  margin: 0 3px;
+  cursor: pointer;
+  font-size: 20px;
+  color: whitesmoke;
+}
+
+.dot.active {
+  color: rgb(255, 242, 0);
+}
+
+/* TODO
+.animation-right {
+  animation: slide-right 1s ease 0s 1 normal forwards;
+}
+
+.animation-left {
+  animation: slide-left 1s ease 0s 1 normal forwards;
+}
+
+@keyframes slide-right {
+  0% {
+    display: none;
+    opacity: 0;
+    transform: translateX(-500px);
+  }
+
+  100% {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    display: none;
+    opacity: 0;
+    transform: translateX(500px);
+  }
+
+  100% {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+*/
+
+@media (width <= 768px) {
+  .post-description-slide {
+    left: 50%
+  }
+}
+
+@media (width <= 425px) {
+  button.right-arrow {
+    display: none;
+  }
+
+  button.left-arrow {
+    display: none;
+  }
+
+  .dot {
+    padding: 3px;
+    font-size: 30px;
+  }
+}
+
+
+
