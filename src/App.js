@@ -1,4 +1,5 @@
 import Slider from "./Slider";
+import Navbar from "./Nav";
 
 function App() {
   const data = [
@@ -39,6 +40,7 @@ function App() {
   };
   return (
     <div className="App">
+      <Navbar />
       <header style={containerStyles}>
         <Slider data={data} />
       </header>
