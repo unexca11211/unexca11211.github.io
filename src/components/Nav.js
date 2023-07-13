@@ -38,40 +38,7 @@ export default function Navbar() {
             </ul>
           </div>
         </li>
-        <li className={`menu__item ${selectedItem === 2 ? 'menu__item--is-selected' : ''}`}>
-          <a href="#">Acerca de nosotros</a>
-          <div className="menu__container">
-            <ul className="submenu">
-              <li><a href="#">Submenú 1</a></li>
-              <li><a href="#">Submenú 2</a></li>
-              <li><a href="#">Submenú 3</a></li>
-            </ul>
-          </div>
-        </li>
-        <li className={`menu__item ${selectedItem === 3 ? 'menu__item--is-selected' : ''}`}>
-          <a href="#">Servicios</a>
-          <div className="menu__container">
-            <ul className="submenu">
-              <li><a href="#">Submenú 1</a></li>
-              <li><a href="#">Submenú 2</a></li>
-              <li><a href="#">Submenú 3</a></li>
-            </ul>
-          </div>
-        </li>
-        <li className={`menu__item ${selectedItem === 4 ? 'menu__item--is-selected' : ''}`}>
-          <a href="#">Contacto</a>
-          <div className="menu__container">
-            <ul className="submenu">
-              <li><a href="#">Submenú 1</a></li>
-              <li><a href="#">Submenú 2</a></li>
-              <li><a href="#">Submenú 3</a></li>
-            </ul>
-          </div>
-        </li>
       </ul>
     </nav>
   );
 }
-
-// TODO
-// Agregar info de Supabase

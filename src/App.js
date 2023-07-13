@@ -1,5 +1,8 @@
-import Slider from "./Slider";
-import Navbar from "./Nav";
+import Slider from "./components/Slider";
+import Navbar from "./components/Nav";
+import Footer from "./components/Footer";
+import Article from "./components/Article"
+// import './App.css';
 
 function App() {
   const data = [
@@ -34,16 +37,20 @@ function App() {
       url: "http:///localhost:3000/logo192.png",
     },
   ];
+
   const containerStyles = {
     width: "90vw",
     height: "90vh",
   };
+
   return (
     <div className="App">
       <Navbar />
       <header style={containerStyles}>
         <Slider data={data} />
       </header>
+      <Article />
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,29 @@
+.App {
+    display: grid;
+    grid-template-areas: 
+        "navbar navbar navbar"
+        "head head head"
+        "side content content"
+        "foot foot foot";
+    grid-template-rows: 50px auto auto;
+}
+
+.navbar {
+    grid-area: navbar;
+}
+
+.header {
+    grid-area: head;
+}
+
+.aside {
+    grid-area: side;
+}
+
+.content {
+    grid-area: content;
+}
+
+.footer {
+    grid-area:  foot;
+}
