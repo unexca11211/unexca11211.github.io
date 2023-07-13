@@ -19,7 +19,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 /* Establecer el color de fondo y el color de texto para los encabezados o títulos */
