@@ -4,19 +4,16 @@
   align-items: center;
   padding: 20px;
   background-color: transparent;
-  color:white;
+  color: white;
   transition: all 0.3s ease-in-out;
   padding: 20px;
-}
-
-.navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 999;
-
 }
+
 .navbar--sticky {
   transform: translateY(-100%);
 }
@@ -24,18 +21,24 @@
 .navbar__logo {
   position: relative;
   font-size: 1.5rem;
-} 
+}
+
+.navbar__logo img {
+  height: 100px;
+}
 
 .menu {
   display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  align-items: center;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .menu__item {
-  position: relative;
-  margin-right: 32px;
+  float: left;
 }
 
 .menu__item a {
@@ -56,25 +59,22 @@
 }
 
 .menu__container {
+  display: none;
   position: absolute;
-  top: 100%;
-  left: 0;
-  width: 200px;
-  background-color: transparent;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease-in-out;
+  background-color: inherit;
+  min-width: 260px;
+  z-index: 1;
+  transition: 0.3s;
   padding: 8px;
 }
 
 .menu__item:hover .menu__container {
-  opacity: 1;
-  visibility: visible;
+  display: flex;
 }
 
 .submenu {
   list-style: none;
-  margin: 5;
+  margin: 5px;
   padding: 0;
   background-color: #ffffff;
   border-radius: 4px;
@@ -83,6 +83,7 @@
 .submenu li {
   padding: 8px;
   border-bottom: 1px solid #c8c18d;
+  overflow-y: scroll;
 }
 
 .submenu li:last-child {
@@ -101,4 +102,66 @@
 .submenu li a:hover {
   color: #0a488e;
   background-color: transparent;
+}
+
+.mobile__button {
+  display: none;
+}
+
+@media screen and (max-width: 425px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .navbar__logo img {
+    height: 60px;
+  }
+
+  .menu {
+    display: none;
+    opacity: 0;
+    align-self: center;
+    gap: 25px;
+  }
+  .menu.menu--visible {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    transition: all 0.5s ease;
+  }
+  .menu__item {
+    float: none;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .menu__item a {
+    text-align: center;
+  }
+  .menu__container {
+    position: relative;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+  .mobile__button {
+    display: block;
+    z-index: 1000;
+  }
+  .submenu {
+    width: 100%;
+    max-height: 200px;
+  }
 }
