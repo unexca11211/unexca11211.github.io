@@ -1,18 +1,18 @@
-button {
-  border: none;
-}
 
 .slider-container {
   position: relative;
   height: 90vh;
-  width: 100vw;
+  width: 100%;
+}
+.slider-container button {
+  border: none;
 }
 
-button.right-arrow {
+.slider-container button.right-arrow {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  right: 32px;
+  right: 50px;
   font-size: 45px;
   color: white;
   z-index: 1;
@@ -21,11 +21,11 @@ button.right-arrow {
   background-color: transparent;
 }
 
-button.left-arrow {
+.slider-container button.left-arrow {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  left: 32px;
+  left: 50px;
   font-size: 45px;
   color: white;
   z-index: 1;
@@ -41,7 +41,6 @@ button.left-arrow {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  /* border-radius: 0 0 10px 10px; */
   overflow: hidden;
 }
 
@@ -83,56 +82,14 @@ button.left-arrow {
   color: rgb(255, 242, 0);
 }
 
-/* TODO
-.animation-right {
-  animation: slide-right 1s ease 0s 1 normal forwards;
-}
-
-.animation-left {
-  animation: slide-left 1s ease 0s 1 normal forwards;
-}
-
-@keyframes slide-right {
-  0% {
-    display: none;
-    opacity: 0;
-    transform: translateX(-500px);
-  }
-
-  100% {
-    display: block;
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slide-left {
-  0% {
-    display: none;
-    opacity: 0;
-    transform: translateX(500px);
-  }
-
-  100% {
-    display: block;
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-*/
-
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .post-description-slide {
     left: 50%
   }
 }
 
-@media (width <= 425px) {
-  button.right-arrow {
-    display: none;
-  }
-
-  button.left-arrow {
+@media (max-width: 425px) {
+  button.right-arrow, button.left-arrow {
     display: none;
   }
 

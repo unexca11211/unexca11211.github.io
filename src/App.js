@@ -1,7 +1,7 @@
 import Slider from "./components/Slider";
 import Navbar from "./components/Nav";
 import Footer from "./components/Footer";
-import Article from "./components/Article"
+import Article from "./components/Article";
 // import './App.css';
 
 function App() {
@@ -46,9 +46,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <header style={containerStyles}>
-        <Slider data={data} />
-      </header>
+      <Slider data={data} />
       <Article />
       <Footer />
     </div>
