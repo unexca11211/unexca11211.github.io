@@ -26,12 +26,6 @@ h1, h2, h3 {
   color: var(--color-blanco);
 }
 
-/* Establecer el color de fondo y el color de texto para los botones */
-button {
-  background-color: var(--color-amarillo-brillante);
-  color: var(--color-negro);
-}
-
 /* Establecer el color de fondo y el color de texto para los enlaces */
 a {
   background-color: var(--color-gris-medio);

@@ -4,33 +4,38 @@ import "./Nav.css";
 export default function Navbar() {
   const [isMobileMenuVisible, SetIsMobileMenuVisible] = useState(false);
 
-  const toggleMobileMenu = () => SetIsMobileMenuVisible(!isMobileMenuVisible);
+  const toggleMobileMenu = () => {
+    SetIsMobileMenuVisible(!isMobileMenuVisible);
+  };
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (window.pageYOffset > 0) {
-  //       setIsSticky(true);
-  //     } else {
-  //       setIsSticky(false);
-  //     }
-  //   };
+  useEffect(() => {
+    const iconMobile = document.querySelector(".icon.nav-icon");
 
-  //   window.addEventListener('scroll', handleScroll);
+    const handleButtonMobile = () => {
+      iconMobile.classList.toggle("open");
+    };
+    iconMobile.addEventListener("click", handleButtonMobile);
 
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
+    return () => {
+      iconMobile.removeEventListener("click", handleButtonMobile);
+    };
+  }, []);
 
   return (
     <nav className={`navbar`}>
       <div className="navbar__logo">
         <img src="/logo.png" />
       </div>
-      <button className="mobile__button" onClick={toggleMobileMenu}>
-        mobile
-      </button>
-      <ul className={`menu ${isMobileMenuVisible ? "menu--visible" : ""}`}>
+      <div class="icon nav-icon" onClick={toggleMobileMenu}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul
+        className={`menu ${
+          isMobileMenuVisible ? "menu--visible" : "menu--invisible"
+        }`}
+      >
         <li className="menu__item">
           <a href="#">Inicio</a>
           <div className="menu__container">
