@@ -38,11 +38,6 @@ function App() {
     },
   ];
 
-  const containerStyles = {
-    width: "90vw",
-    height: "90vh",
-  };
-
   return (
     <div className="App">
       <Navbar />
