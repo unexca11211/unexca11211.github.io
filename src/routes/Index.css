@@ -3,7 +3,7 @@
     grid-template-areas: 
         "navbar navbar navbar"
         "head head head"
-        "side content content"
+        "content content content"
         "foot foot foot";
     grid-template-rows: 50px auto auto;
 }
@@ -12,15 +12,11 @@
     grid-area: navbar;
 }
 
-.header {
+.slider-container {
     grid-area: head;
 }
 
-.aside {
-    grid-area: side;
-}
-
-.content {
+.article-about-container {
     grid-area: content;
 }
 

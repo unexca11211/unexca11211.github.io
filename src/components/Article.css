@@ -83,14 +83,24 @@
 }
 
 .about-container {
-  overflow-y: scroll;
-  height: 100vh;
+  overflow-y: auto;
+  width: 90%;
+  height: 110vh;
   border-radius: 30px;
-  padding: 0px 10px 0px 10px;
+  padding: 0px 6px 0px 10px;
   margin-left: 14px;
   margin-right: 14px;
   background: whitesmoke;
   color: var(--color-negro);
+  transition: box-shadow 0.3s ease;
+}
+
+.about-container ::-webkit-scrollbar {
+  width: 10px;
+}
+
+.about-container:hover {
+  box-shadow: 12px 12px 0px rgb(189, 189, 189);
 }
 
 .about-container :is(h1, h2, p) {

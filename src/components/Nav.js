@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {Link} from "react-router-dom";
 import "./Nav.css";
 
 export default function Navbar() {
@@ -26,7 +27,7 @@ export default function Navbar() {
       <div className="navbar__logo">
         <img src="/logo.png" />
       </div>
-      <div class="icon nav-icon" onClick={toggleMobileMenu}>
+      <div className="icon nav-icon" onClick={toggleMobileMenu}>
         <span></span>
         <span></span>
         <span></span>
@@ -37,12 +38,10 @@ export default function Navbar() {
         }`}
       >
         <li className="menu__item">
-          <a href="#">Inicio</a>
+          <Link to={"/"}>Inicio</Link>
         </li>
-        {/* Dropdown */}
-        <li className="menu__item">
-          <a href="#">Categorias</a>
-          {/* Dropdown content */}
+        {/* <li className="menu__item">
+          <button>Categorias</button>
           <div className="menu__container">
             <ul className="submenu">
               <li>
@@ -56,6 +55,12 @@ export default function Navbar() {
               </li>
             </ul>
           </div>
+        </li> */}
+        <li className="menu__item">
+          <Link to={"/posts"}>Posts</Link> 
+        </li>
+        <li className="menu__item">
+          <Link to={"/homeworks"}>Homework</Link> 
         </li>
       </ul>
     </nav>

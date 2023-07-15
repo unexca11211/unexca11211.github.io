@@ -1,10 +1,7 @@
-import Slider from "./components/Slider";
-import Navbar from "./components/Nav";
-import Footer from "./components/Footer";
-import Article from "./components/Article";
-// import './App.css';
+import Slider from "../components/Slider";
+import Article from "../components/Article";
 
-function App() {
+function Index() {
   const data = [
     {
       url: "https://imgur.com/LbBqmJ9",
@@ -27,13 +24,11 @@ function App() {
   ];
 
   return (
-    <div className="App">
-      <Navbar />
+    <>
       <Slider data={data} />
       <Article />
-      <Footer />
-    </div>
+    </>
   );
 }
 
-export default App;
+export default Index;

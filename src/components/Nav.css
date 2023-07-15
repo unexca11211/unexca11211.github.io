@@ -3,16 +3,19 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+  position: sticky;
+  top: 0;
   background-color: transparent;
   color: white;
   transition: all 0.3s ease-in-out;
   padding: 20px;
-  z-index: auto;
+  z-index: 999;
 }
 
 .navbar__logo {
   position: relative;
   font-size: 1.5rem;
+  z-index: 1000;
 }
 
 .navbar__logo img {
@@ -33,7 +36,7 @@
   float: left;
 }
 
-.menu__item a {
+.menu__item a, .menu__item button {
   color: #ffffff;
   text-decoration: none;
   font-size: 20px;
@@ -43,10 +46,11 @@
   box-sizing: border-box;
   width: 100%;
   padding: 5px;
+  border: none;
   border-radius: 4px;
 }
 
-.menu__item:hover a {
+.menu__item:hover a, .menu__item:hover button {
   color: #0099ff;
 }
 
@@ -54,7 +58,7 @@
   display: none;
   position: absolute;
   background-color: inherit;
-  min-width: 260px;
+  overflow-y: scroll;
   z-index: 1;
   transition: 0.3s;
   padding: 8px;
@@ -119,6 +123,7 @@
 
   .navbar__logo img {
     height: 60px;
+    z-index: 999;
   }
 
   .menu.menu--invisible {
@@ -136,7 +141,7 @@
     width: 100%;
     position: fixed;
     z-index: 999;
-    left: -40;
+    left: 0%;
     top: 0;
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.9);
@@ -165,6 +170,7 @@
   .submenu {
     width: 100%;
     max-height: 200px;
+    background-color: transparent;
   }
   .nav-icon {
     width: 35px;
