@@ -38,19 +38,6 @@ export default function Navbar() {
       >
         <li className="menu__item">
           <a href="#">Inicio</a>
-          <div className="menu__container">
-            <ul className="submenu">
-              <li>
-                <a href="#">Submenú 1</a>
-              </li>
-              <li>
-                <a href="#">Submenú 2</a>
-              </li>
-              <li>
-                <a href="#">Submenú 3</a>
-              </li>
-            </ul>
-          </div>
         </li>
         {/* Dropdown */}
         <li className="menu__item">

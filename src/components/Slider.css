@@ -1,7 +1,9 @@
 .slider-container {
   position: relative;
-  height: 90vh;
+  margin-top: -15%;
+  height: 102vh;
   width: 100%;
+  z-index: -1;
 }
 .slider-container button {
   border: none;
@@ -51,18 +53,9 @@
   top: 50%;
   left: 30%;
   transform: translate(-50%, -50%);
-  background: rgba(230, 230, 230, 0.2);
-  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
-  backdrop-filter: blur(21px);
-  -webkit-backdrop-filter: blur(1px);
+  background: transparent;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
   overflow: hidden;
-}
-
-.post-description-slide h1 {
-  text-align: center;
-  text-transform: uppercase;
 }
 
 .dot-container {
@@ -73,6 +66,7 @@
   margin: 0 auto;
   padding: 7px;
   border-radius: 0 0 21px 21px;
+  z-index: 1;
 }
 
 .dot {
@@ -93,6 +87,10 @@
 }
 
 @media (max-width: 425px) {
+  .slider-container {
+    margin-top: -30%;
+    z-index: 0;
+  }
   button.right-arrow,
   button.left-arrow {
     display: none;
