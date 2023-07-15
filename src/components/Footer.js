@@ -9,7 +9,7 @@ export default function Footer () {
           <div className="wave" id="wave3"></div>
           <div className="wave" id="wave4"></div>
         </div>
-        <p>&copy;2021 FL 11211 | All Rights Reserved</p>
+        <p>&copy;2023 FL 11211 | All Rights Reserved</p>
       </footer>
     )
 }

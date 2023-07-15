@@ -14,16 +14,17 @@ export async function getSupabase(target, select) {
 }
 
 export async function getAllHomeWorkOf(name, last_name) {
-  const { data: student } = await supabase
-    .from("students")
-    .select()
-    .like("Nombres", `%${name}%`)
-    .like("Apellidos", `%${last_name}%`)
-    .single();
-
-  const studentName = `${student.Nombres.split(" ")[0]} ${
-    student.Apellidos.split(" ")[0]
+  // const { data: student } = await supabase
+  //   .from("students")
+  //   .select()
+  //   .like("Nombres", `%${name}%`)
+  //   .like("Apellidos", `%${last_name}%`)
+  //   .single();
+  // console.log(name, last_name)
+  const studentName = `${name.split(" ")[0]} ${
+    last_name.split(" ")[0]
   }`;
+  
   const allWorkFromStorage = await supabase.storage
     .from("blog_storage")
     .list(`task_english/${studentName}`);

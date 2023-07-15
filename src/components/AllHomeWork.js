@@ -1,51 +1,69 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { getAllHomeWorkOf } from "../utils/utils_supabase";
-import "./AllHomeWork.css"
+import "./AllHomeWork.css";
 
 export default function TableAllHomeWorks() {
-  const students = useLoaderData();
-  const [homework, setHomework] = useState(()=> {
-    return []
-  });
-  console.log(homework);
+  const {students, homework} = useLoaderData();
+  const [selectedStudent, setSelectedStudent] = useState(null);
+  // const [homework, setHomework] = useState([]);
 
-  useEffect(() => {
-      students.data.map((student) => {
-        getAllHomeWorkOf(student.Nombres, student.Apellidos).then(works => {
-          setHomework(homework.push(works))
-        });
-      })
-  }, []);
-
+  // useEffect(() => {
+  //   if (selectedStudent) {
+  //     getAllHomeWorkOf(selectedStudent.Nombres, selectedStudent.Apellidos)
+  //       .then((works) => {
+  //         setHomework(works);
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //   }
+  // }, [selectedStudent]);
+  console.log(homework)
   return (
-    <table className="table-all-works">
-      <thead>
-        <tr>
-          <td>Name and Last Name</td>
-          <td>Homework 1</td>
-          <td>Homework 2</td>
-          <td>Homework 3</td>
-          <td>Homework 4</td>
-          <td>Homework 5</td>
-          <td>Homework 6</td>
-          <td>Homework 7</td>
-          <td>Homework 8</td>
-        </tr>
-      </thead>
-      <tbody>
-        {students.data.map((student) => {
-          return (
-            <tr key={students.Cedula}>
+    <>
+      <select
+        onChange={(event) => {
+          const selectedCedula = event.target.value;
+          const selectedStudent = students.data.find(
+            (student) => student.Cedula === selectedCedula
+          );
+          setSelectedStudent(selectedStudent);
+        }}
+      >
+        <option value="">Selecciona un estudiante</option>
+        {students.data.map((student) => (
+          <option key={student.Cedula} value={student.Cedula}>
+            {student.Nombres} {student.Apellidos}
+          </option>
+        ))}
+      </select>
+      {selectedStudent && (
+        <table className="table-all-works">
+          <thead>
+            <tr>
+              <td>Name and Last Name</td>
+              {homework.map((work) => (
+                <td key={work.id}>{work.name}</td>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr key={selectedStudent.Cedula}>
               <td>
                 <h3>
-                  {student.Nombres} {student.Apellidos}
+                  {selectedStudent.Nombres} {selectedStudent.Apellidos}
                 </h3>
               </td>
+              {homework.map((work) => (
+                <td key={work.id}>
+                  {work.url && <a href={work.url}>Link</a>}
+                </td>
+              ))}
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          </tbody>
+        </table>
+      )}
+    </>
   );
 }
