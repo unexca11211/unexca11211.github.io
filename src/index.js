@@ -41,23 +41,24 @@ const router = createBrowserRouter([
         path: "/homeworks",
         element: <Homeworks />,
         loader: async () => {
-          const { data: student, error } = await supabase
+          const { data: students, error } = await supabase
             .from("students")
-            .select("Nombres,Apellidos");
+            .select("Nombres,Apellidos").order("Nombres");
           if (error) return error;
+          console.log(students);
           const list_homework = []
-          student
-            .map(async (p, index) => {
+          students
+            .map(async (p) => {
               let data = await getAllHomeWorkOf(p.Nombres, p.Apellidos);
+              console.log(data);
               return {
                 ...p,
-                homeworks: data[index],
+                homeworks: data,
               };
             })
             .map((list) => {
-              list.then(data => list_homework.push(data))
+              list.then(data => list_homework.sort().push(data))
             });
-          console.log(list_homework);
           return list_homework;
           // {name, tareas: []}
         },
