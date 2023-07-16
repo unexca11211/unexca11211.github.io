@@ -1,68 +1,47 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import { getAllHomeWorkOf } from "../utils/utils_supabase";
 import "./AllHomeWork.css";
 
 export default function TableAllHomeWorks() {
-  const list = useLoaderData();
-  const [selectedStudent, setSelectedStudent] = useState(null);
-  // const [homework, setHomework] = useState([]);
-
-  // useEffect(() => {
-  //   if (selectedStudent) {
-  //     getAllHomeWorkOf(selectedStudent.Nombres, selectedStudent.Apellidos)
-  //       .then((works) => {
-  //         setHomework(works);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }
-  // }, [selectedStudent]);
-  // return (
-  //   <>
-  //     <select
-  //       onChange={(event) => {
-  //         const selectedCedula = event.target.value;
-  //         const selectedStudent = students.data.find(
-  //           (student) => student.Cedula === selectedCedula
-  //         );
-  //         setSelectedStudent(selectedStudent);
-  //       }}
-  //     >
-  //       <option value="">Selecciona un estudiante</option>
-  //       {students.data.map((student) => (
-  //         <option key={student.Cedula} value={student.Cedula}>
-  //           {student.Nombres} {student.Apellidos}
-  //         </option>
-  //       ))}
-  //     </select>
-  //     {selectedStudent && (
-  //       <table className="table-all-works">
-  //         <thead>
-  //           <tr>
-  //             <td>Name and Last Name</td>
-  //             {homework.map((work) => (
-  //               <td key={work.id}>{work.name}</td>
-  //             ))}
-  //           </tr>
-  //         </thead>
-  //         <tbody>
-  //           <tr key={selectedStudent.Cedula}>
-  //             <td>
-  //               <h3>
-  //                 {selectedStudent.Nombres} {selectedStudent.Apellidos}
-  //               </h3>
-  //             </td>
-  //             {homework.map((work) => (
-  //               <td key={work.id}>
-  //                 {work.url && <a href={work.url}>Link</a>}
-  //               </td>
-  //             ))}
-  //           </tr>
-  //         </tbody>
-  //       </table>
-  //     )}
-  //   </>
-  // );
+  const list_homework = useLoaderData();
+  console.log("Lista final de homeworks", list_homework);
+  const [selectedStudent, setSelectedStudent] = useState([]);
+  console.log(selectedStudent);
+  return (
+    <>
+      <select
+        onChange={(event) => {
+          const selectedCedula = Number(event.target.value);
+          const selectedStudent = list_homework.find(
+            (student) => student.Cedula === selectedCedula
+          );
+          console.log(selectedCedula);
+          setSelectedStudent(selectedStudent);
+        }}
+      >
+        <option value="">Selecciona un estudiante</option>
+        {list_homework.map((student, index) => (
+          <option key={index} value={student.Cedula}>
+            {student.Nombres} {student.Apellidos}
+          </option>
+        ))}
+      </select>
+      {selectedStudent && (
+        <section className="table-all-works">
+          <h1>Name and Last Name</h1>
+          <div key={selectedStudent.Cedula}>
+            <h3>
+              {selectedStudent.Nombres} {selectedStudent.Apellidos}
+            </h3>
+            {selectedStudent.homeworks.map((work) => (
+              <div key={work.id}>
+                {work.publicURL && <a href={work.publicURL}>View homeworks</a>}
+                <h1>{work.name}</h1>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+    </>
+  );
 }
