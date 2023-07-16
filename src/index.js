@@ -29,37 +29,44 @@ const router = createBrowserRouter([
       {
         path: "posts/:postName",
         element: <Post />,
-        loader: async ({params}) => {
-          return await supabase.from("post").select("*").eq("title", params.postName)
-        }
+        loader: async ({ params }) => {
+          return await supabase
+            .from("post")
+            .select("*")
+            .eq("title", params.postName);
+        },
       },
 
       {
         path: "/homeworks",
         element: <Homeworks />,
         loader: async () => {
-          const { data: student } = await supabase.from("students").select("Nombres,Apellidos");
-          const homeworks = []
-          student.map(async p => {
-            homeworks.push(await getAllHomeWorkOf(p.Nombres, p.Apellidos));
-          })
-          const list_homework = {}
-          
-          for (let index = 0; index < student.length; index++) {
-            list_homework.push({})
-          }
-          
-          console.log(student, homeworks)
-          console.log(list_homework)
-          return list_homework;  
+          const { data: student, error } = await supabase
+            .from("students")
+            .select("Nombres,Apellidos");
+          if (error) return error;
+          const list_homework = []
+          student
+            .map(async (p, index) => {
+              let data = await getAllHomeWorkOf(p.Nombres, p.Apellidos);
+              return {
+                ...p,
+                homeworks: data[index],
+              };
+            })
+            .map((list) => {
+              list.then(data => list_homework.push(data))
+            });
+          console.log(list_homework);
+          return list_homework;
           // {name, tareas: []}
-        }
+        },
       },
       {
         path: "/homeworks/:studentName",
         element: <HomeworksOf />,
         loader: async ({ params }) => {
-          return await getAllHomeWorkOf(params.postName);
+          return await getAllHomeWorkOf(params.studentName);
         },
       },
     ],

@@ -14,33 +14,25 @@ export async function getSupabase(target, select) {
 }
 
 export async function getAllHomeWorkOf(name, last_name) {
-  // const { data: student } = await supabase
-  //   .from("students")
-  //   .select()
-  //   .like("Nombres", `%${name}%`)
-  //   .like("Apellidos", `%${last_name}%`)
-  //   .single();
-  // console.log(name, last_name)
-  const studentName = `${name.split(" ")[0]} ${
-    last_name.split(" ")[0]
-  }`;
-  
-  const allWorkFromStorage = await supabase.storage
+  const studentName = `${name.split(" ")[0]} ${last_name.split(" ")[0]}`;
+
+  const { data: allWorkFromStorage, error } = await supabase.storage
     .from("blog_storage")
     .list(`task_english/${studentName}`);
 
-  const allWorkFromStorageWithPublicUrl = allWorkFromStorage.data.map(
-    (items) => {
-      const {data: publicURL, error} = supabase.storage
-        .from("blog_storage")
-        .getPublicUrl(`task_english/${studentName}/${items.name}`);
+  const allWorkFromStorageWithPublicUrl = [];
+  allWorkFromStorage.map(async (items) => {
+    const { data: publicURL, error } = await supabase.storage
+      .from("blog_storage")
+      .getPublicUrl(`task_english/${studentName}/${items.name}`);
 
-      return {
-        ...items,
-        publicURL: publicURL.publicUrl || "",
-      };
-    }
-  );
-
-  return allWorkFromStorageWithPublicUrl
+    if (error) throw error;
+    
+    return allWorkFromStorageWithPublicUrl.push({
+      ...items,
+      publicURL: publicURL.publicUrl || "",
+    });
+  });
+  
+  return allWorkFromStorageWithPublicUrl;
 }
