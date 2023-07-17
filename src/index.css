@@ -3,8 +3,46 @@
   --color-negro: #202020;
   --color-gris-oscuro: #3f3f3f;
   --color-gris-medio: #707070;
-  --color-amarillo-brillante: #ffdf6c;
+  --color-azul-marino: #2A446F;
+  --color-azul: #084887;
   --color-blanco: #ffffff;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #084887 #484848;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  width: 9px;
+  width: 9px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #484848;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #DEE8EA;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #A3AAAC;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #084887;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #0C6BC9;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #0F88FF;
 }
 
 /* Establecer el color de fondo y el color de texto */
@@ -19,18 +57,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 /* Establecer el color de fondo y el color de texto para los encabezados o títulos */
 h1, h2, h3 {
   color: var(--color-blanco);
-}
-
-/* Establecer el color de fondo y el color de texto para los botones */
-button {
-  background-color: var(--color-amarillo-brillante);
-  color: var(--color-negro);
 }
 
 /* Establecer el color de fondo y el color de texto para los enlaces */

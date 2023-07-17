@@ -1,0 +1,25 @@
+.container-all-works {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin-bottom: 1rem;
+  margin: 4rem;
+}
+
+.table-container {
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.dropdown {
+  height: 20rem;
+}
+
+.homework-iframe {
+  border: 1px solid black;
+  width: 99%;
+  height: 100rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
