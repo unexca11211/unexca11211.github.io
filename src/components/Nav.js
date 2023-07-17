@@ -25,7 +25,7 @@ export default function Navbar() {
   return (
     <nav className={`navbar`}>
       <div className="navbar__logo">
-        <img src="/logo.png" />
+        <img src="/logo.png" alt="logo"/>
       </div>
       <div className="icon nav-icon" onClick={toggleMobileMenu}>
         <span></span>
@@ -42,11 +42,6 @@ export default function Navbar() {
         </li>
         <li className="menu__item">
           <Link to={"/posts"}>Posts</Link>
-        </li>
-        <li className="menu__item">
-          <Link to={"/posts/78d545c7-5f3f-430e-b56b-cef7daa1522c"}>
-            The first post
-          </Link>
         </li>
         <li className="menu__item">
           <Link to={"/homeworks"}>Homework</Link>

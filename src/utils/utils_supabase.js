@@ -1,3 +1,4 @@
+/* eslint-disable  */
 import supabase from "./supabase_init";
 // NO TOCAR EsTA VAINA O si NO LEs PEGO by douglas
 

@@ -1,5 +1,6 @@
-/* eslint-disable import/no-webpack-loader-syntax */
+/* eslint-disable */
 import About from "../md/about.mdx";
+import {Link} from "react-router-dom"
 import "./Article.css";
 
 export default function AboutArticleSection() {
@@ -23,9 +24,9 @@ export default function AboutArticleSection() {
           </p>
           <div className="container-info">
             <span>11 / 09 / 2023</span>
-            <a href="#" className="button-link">
+            <Link href="#" className="button-link">
               Go to the post!
-            </a>
+            </Link>
           </div>
         </article>
       </section>

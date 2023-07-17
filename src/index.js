@@ -10,7 +10,7 @@ import Post from "./routes/post";
 import AllPosts from "./routes/allpost";
 import Homeworks from "./routes/homeworks";
 import HomeworksOf from "./routes/homeworks_of";
-import { getImages, getAllHomeWorkOf } from "./utils/utils_supabase";
+import { getAllHomeWorkOf } from "./utils/utils_supabase";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         element: <AllPosts />,
       },
       {
-        path: "posts/:postName",
+        path: "/posts/:postName",
         element: <Post />,
         loader: async ({ params }) => {
           return await supabase
