@@ -1,47 +1,84 @@
-import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useState, useEffect } from "react";
+import supabase from "../utils/supabase_init";
+import { getAllHomeWorkOf } from "../utils/utils_supabase";
 import "./AllHomeWork.css";
 
 export default function TableAllHomeWorks() {
-  const list_homework = useLoaderData();
-  console.log("Lista final de homeworks", list_homework);
+  const [listHomework, setListHomework] = useState([]);
+  const [isLoadingList, setIsLoadingList] = useState(true);
   const [selectedStudent, setSelectedStudent] = useState([]);
-  console.log(selectedStudent);
+
+  useEffect(() => {
+    supabase
+      .from("students")
+      .select("Cedula,Nombres,Apellidos")
+      .order("Nombres")
+      .then(({ data: students }) => {
+        let data = students.map((student) => {
+          let homeworks = getAllHomeWorkOf(student.Nombres, student.Apellidos);
+          return {
+            ...student,
+            homeworks,
+          };
+        });
+        setIsLoadingList(false);
+        setListHomework(data);
+      });
+  }, []);
+
   return (
-    <>
+    <div className="container-all-works">
       <select
+        className="dropdown"
         onChange={(event) => {
           const selectedCedula = Number(event.target.value);
-          const selectedStudent = list_homework.find(
+          const selectedStudent = listHomework.find(
             (student) => student.Cedula === selectedCedula
           );
-          console.log(selectedCedula);
           setSelectedStudent(selectedStudent);
         }}
       >
         <option value="">Selecciona un estudiante</option>
-        {list_homework.map((student, index) => (
-          <option key={index} value={student.Cedula}>
-            {student.Nombres} {student.Apellidos}
-          </option>
-        ))}
+        {isLoadingList ? (
+          <option>loading ...</option>
+        ) : (
+          listHomework.map((student, index) => (
+            <option key={index} value={student.Cedula}>
+              {student.Nombres} {student.Apellidos}
+            </option>
+          ))
+        )}
       </select>
-      {selectedStudent && (
-        <section className="table-all-works">
+      {isLoadingList ? (
+        <h1>...loading</h1>
+      ) : selectedStudent.length !== 0 ? (
+        <div className="table-container">
           <h1>Name and Last Name</h1>
           <div key={selectedStudent.Cedula}>
             <h3>
               {selectedStudent.Nombres} {selectedStudent.Apellidos}
             </h3>
-            {selectedStudent.homeworks.map((work) => (
-              <div key={work.id}>
-                {work.publicURL && <a href={work.publicURL}>View homeworks</a>}
-                <h1>{work.name}</h1>
-              </div>
-            ))}
+            {selectedStudent.homeworks.map((work) => {
+              return (
+                <div key={work.id}>
+                  <h3>{work.name}</h3>
+                  {work.publicURL && (
+                    <iframe
+                      src={work.publicURL}
+                      title={work.name}
+                      className="homework-iframe"
+                      width="auto"
+                      height="500px"
+                    ></iframe>
+                  )}
+                </div>
+              );
+            })}
           </div>
-        </section>
+        </div>
+      ) : (
+        ""
       )}
-    </>
+    </div>
   );
 }

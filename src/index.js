@@ -10,7 +10,7 @@ import Post from "./routes/post";
 import AllPosts from "./routes/allpost";
 import Homeworks from "./routes/homeworks";
 import HomeworksOf from "./routes/homeworks_of";
-import { getAllHomeWorkOf } from "./utils/utils_supabase";
+import { getImages, getAllHomeWorkOf } from "./utils/utils_supabase";
 
 const router = createBrowserRouter([
   {
@@ -31,36 +31,15 @@ const router = createBrowserRouter([
         element: <Post />,
         loader: async ({ params }) => {
           return await supabase
-            .from("post")
-            .select("*")
-            .eq("title", params.postName);
+            .from("posts")
+            .select("*, users ( id, first_name, last_name )")
+            .eq("id", params.postName)
+            .single();
         },
       },
-
       {
         path: "/homeworks",
         element: <Homeworks />,
-        loader: async () => {
-          const { data: students, error } = await supabase
-            .from("students")
-            .select("Cedula,Nombres,Apellidos")
-            .order("Nombres");
-          if (error) return error;
-          const list_homework = [];
-          students
-            .map(async (p) => {
-              let data = await getAllHomeWorkOf(p.Nombres, p.Apellidos);
-              return {
-                ...p,
-                homeworks: data,
-              };
-            })
-            .map((list) => {
-              list.then((data) => list_homework.sort().push(data));
-            });
-          return list_homework;
-          // {name, tareas: []}
-        },
       },
       {
         path: "/homeworks/:studentName",
@@ -79,3 +58,15 @@ root.render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
+// mi pana, a las mentes brillantes. Muy poca gente la entiende
+// mi pana entrando a locura
+// const images = getImages();
+
+// const asd = images.map((image) => {
+//   return Array.isArray(image.publicURL)
+//     ? image.publicURL.map((url) => ({ url: url }))
+//     : [];
+// });
+
+// console.log(getImages());
+// console.log(asd);

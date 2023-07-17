@@ -6,7 +6,7 @@ export default function Root() {
   return (
     <>
       <Navbar />
-      <div className="App">
+      <div className="Root">
         <Outlet />
       </div>
       <Footer />

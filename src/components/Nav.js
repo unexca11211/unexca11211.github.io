@@ -38,29 +38,18 @@ export default function Navbar() {
         }`}
       >
         <li className="menu__item">
-          <Link to={"/"}>Inicio</Link>
-        </li>
-        {/* <li className="menu__item">
-          <button>Categorias</button>
-          <div className="menu__container">
-            <ul className="submenu">
-              <li>
-                <a href="#">Submenú 1</a>
-              </li>
-              <li>
-                <a href="#">Submenú 2</a>
-              </li>
-              <li>
-                <a href="#">Submenú 3</a>
-              </li>
-            </ul>
-          </div>
-        </li> */}
-        <li className="menu__item">
-          <Link to={"/posts"}>Posts</Link> 
+          <Link to={"/"}>Index</Link>
         </li>
         <li className="menu__item">
-          <Link to={"/homeworks"}>Homework</Link> 
+          <Link to={"/posts"}>Posts</Link>
+        </li>
+        <li className="menu__item">
+          <Link to={"/posts/78d545c7-5f3f-430e-b56b-cef7daa1522c"}>
+            The first post
+          </Link>
+        </li>
+        <li className="menu__item">
+          <Link to={"/homeworks"}>Homework</Link>
         </li>
       </ul>
     </nav>

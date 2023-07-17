@@ -1,25 +1,4 @@
-.App {
-    display: grid;
-    grid-template-areas: 
-        "navbar navbar navbar"
-        "head head head"
-        "content content content"
-        "foot foot foot";
-    grid-template-rows: 50px auto auto;
-}
-
-.navbar {
-    grid-area: navbar;
-}
-
-.slider-container {
-    grid-area: head;
-}
-
-.article-about-container {
-    grid-area: content;
-}
-
-.footer {
-    grid-area:  foot;
+.Root {
+    padding-bottom: 100px;
+    min-height: calc(100vh - 100px);
 }

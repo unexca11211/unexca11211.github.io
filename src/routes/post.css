@@ -1,0 +1,35 @@
+.post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: auto;
+    color: white;
+    background-color: var(--color-azul-marino);
+    margin: 5rem;
+}
+
+.post header {
+    padding: 1rem;
+    width: 90%;
+    height: 100%;
+    margin: 0px 1rem 0px 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 10px double white;
+}
+
+.post-content, .post-content p {
+    box-sizing: border-box;
+    padding: 2rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
